@@ -1,0 +1,39 @@
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+}
+
+.photo-section img {
+    margin-top: 50px;
+    height: 500px;
+    width: 450px;
+    box-shadow: -12px 12px 2px 1px rgba(255, 224, 179, 1);
+}
+
+.text-section h4 {
+    font-weight: 400;
+    font-size: 60px;
+    height: 72px;
+    margin-bottom: 0px;
+}
+
+.text-section p {
+    margin-top: 5px;
+    margin-bottom: 60px;
+    font-size: 24px;
+}
+
+.shop-btn {
+    text-decoration: none;
+    font-size: 25px;
+    background: #FF9900;
+    padding: 15px 35px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.shop-btn:hover {
+    color: white;
+}
