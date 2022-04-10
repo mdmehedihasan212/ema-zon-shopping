@@ -1,0 +1,10 @@
+.orders-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+.orders-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 50px 30px;
+}
