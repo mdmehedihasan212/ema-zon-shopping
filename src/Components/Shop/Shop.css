@@ -6,6 +6,11 @@
 .products-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    margin: 100px 50px;
+    margin: 50px 30px;
     gap: 45px;
+}
+
+.order-info {
+    background-color: #FFE0B3;
+
 }

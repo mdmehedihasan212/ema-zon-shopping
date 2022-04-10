@@ -1,8 +1,9 @@
 import React from 'react';
 import './Product.css';
+import { MdOutlineAddShoppingCart } from 'react-icons/md';
 
-const Product = ({ product }) => {
-    console.log(product);
+const Product = ({ product, AddToCart }) => {
+    // console.log(product);
     const { img, name, price, seller, ratings } = product;
     return (
         <section className='product-container'>
@@ -15,7 +16,10 @@ const Product = ({ product }) => {
                 <p>Manufacturer : {seller}</p>
                 <p>Rating : {ratings} star</p>
             </div>
-            <button className='product-add-btn'>Add to Cart</button>
+            <button className='product-add-btn' onClick={() => AddToCart(product)}>
+                <p>Add to Cart</p>
+                <MdOutlineAddShoppingCart className='cart-icon' />
+            </button>
         </section>
     );
 };

@@ -4,6 +4,7 @@
     border: 1px solid #95A0A7;
     box-sizing: border-box;
     border-radius: 8px;
+    position: relative;
 }
 
 .product-container img {
@@ -39,15 +40,28 @@
 }
 
 .product-add-btn {
-    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    height: 48px;
     cursor: pointer;
+    height: 48px;
     background: #FFE0B3;
     border: 1px solid #95A0A7;
     border-radius: 0px 0px 8px 8px;
+    position: absolute;
+    bottom: 0px;
 }
 
 .product-add-btn:hover {
     background: #ffd28d;
+}
+
+.product-add-btn p {
+    font-size: 15px;
+}
+
+.cart-icon {
+    font-size: 17px;
+    margin-left: 10px;
 }
