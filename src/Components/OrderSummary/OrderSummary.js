@@ -6,9 +6,11 @@ const OrderSummary = ({ orders }) => {
 
     let total = 0;
     let shipping = 0;
+    let quantity = 0;
     for (const product of orders) {
-        total = total + product.price;
-        shipping = shipping + product.shipping;
+        quantity = quantity + product.quantity;
+        total = total + product.price * product.quantity;
+        shipping = shipping + product.shipping * product.quantity;
     }
     const tax = parseFloat((total * 0.1).toFixed(2));
     const grandTotal = total + shipping + tax;
@@ -16,7 +18,7 @@ const OrderSummary = ({ orders }) => {
     return (
         <div className='order-summary'>
             <h1>OrderSummary</h1>
-            <p>Selected Items: {orders.length}</p>
+            <p>Selected Items: {quantity}</p>
             <p>Total Price: ${total}</p>
             <p>Total Shipping Charge: ${shipping}</p>
             <p>Tax: ${tax}</p>

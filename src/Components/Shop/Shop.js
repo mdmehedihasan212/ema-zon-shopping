@@ -25,10 +25,21 @@ const Shop = () => {
 
     }, [products])
 
-    const AddToCart = (product) => {
-        const newOrder = [...orders, product];
+    const AddToCart = (selectedProduct) => {
+        let newOrder = [];
+        const exist = orders.find(product => product.id === selectedProduct.id)
+        if (!exist) {
+            selectedProduct.quantity = 1;
+            newOrder = [...orders, selectedProduct]
+        }
+        else {
+            const rest = orders.filter(product => product.id !== selectedProduct.id)
+            exist.quantity = exist.quantity + 1;
+            newOrder = [...rest, exist];
+        }
+
         setOrders(newOrder);
-        addToDb(product.id)
+        addToDb(selectedProduct.id)
     }
 
     return (
