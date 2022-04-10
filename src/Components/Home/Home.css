@@ -9,6 +9,7 @@
     margin-top: 50px;
     height: 500px;
     width: 450px;
+    border-radius: 4px;
     box-shadow: -12px 12px 2px 1px rgba(255, 224, 179, 1);
 }
 
@@ -28,12 +29,12 @@
 .shop-btn {
     text-decoration: none;
     font-size: 25px;
-    background: #FF9900;
+    background: #ffd28d;
     padding: 15px 35px;
     border-radius: 4px;
     cursor: pointer;
 }
 
 .shop-btn:hover {
-    color: white;
+    background-color: #fec876;
 }
