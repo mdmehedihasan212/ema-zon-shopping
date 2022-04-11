@@ -1,5 +1,4 @@
 import React from 'react';
-import './CustomLink.css';
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 
 const CustomLink = ({ children, to, ...props }) => {

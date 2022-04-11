@@ -8,3 +8,8 @@
     padding: 0px 42px;
     color: #2A414F;
 }
+
+.input-group input {
+    font-size: 1.2em;
+    padding: 10px;
+}
