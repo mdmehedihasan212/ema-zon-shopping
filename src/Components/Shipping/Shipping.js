@@ -3,7 +3,7 @@ import './Shipping.css';
 
 const Shipping = () => {
     return (
-        <section>
+        <section className='main-form-container'>
             <div>
                 <form className='shipping-form-container'>
                     <h1 className='form-title'>Shipping Form</h1>

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const SignUp = () => {
     return (
-        <section>
+        <section className='main-form-container'>
             <div>
                 <form className='sign-form-container'>
                     <h1 className='form-title'>Sign Up</h1>
@@ -26,7 +26,7 @@ const SignUp = () => {
                         <Link to={'/login'}> Login</Link>
                     </p>
                     <p className='form-text'>
-                        -or-
+                        -----or-----
                     </p>
                     <div className="google-btn">
                         <button>

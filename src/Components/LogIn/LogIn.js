@@ -5,7 +5,7 @@ import { FcGoogle } from 'react-icons/fc';
 
 const LogIn = () => {
     return (
-        <section>
+        <section className='main-form-container'>
             <div>
                 <form className='login-form-container'>
                     <h1 className='form-title'>Login</h1>
@@ -22,7 +22,7 @@ const LogIn = () => {
                         <Link to={'/signup'}> Create New Account</Link>
                     </p>
                     <p className='form-text'>
-                        -or-
+                        -----or-----
                     </p>
                     <div className="google-btn">
                         <button>
