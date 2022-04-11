@@ -1,9 +1,8 @@
 import React from 'react';
 import './OrderSummary.css';
 
-const OrderSummary = ({ orders }) => {
+const OrderSummary = ({ orders, children }) => {
     // console.log(orders);
-
     let total = 0;
     let shipping = 0;
     let quantity = 0;
@@ -23,6 +22,7 @@ const OrderSummary = ({ orders }) => {
             <p>Total Shipping Charge: ${shipping}</p>
             <p>Tax: ${tax}</p>
             <h1>Grand Total: ${grandTotal.toFixed(2)}</h1>
+            <button className='children-btn'>{children}</button>
         </div>
     );
 };

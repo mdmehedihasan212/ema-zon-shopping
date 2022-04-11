@@ -5,6 +5,7 @@ import useProducts from '../../Hooks/useProducts';
 import OrderReview from '../OrderReview/OrderReview';
 import OrderSummary from '../OrderSummary/OrderSummary';
 import { removeFromDb } from '../../Utilities/fakedb';
+import { Link } from 'react-router-dom';
 
 const Orders = () => {
     const [products] = useProducts();
@@ -28,7 +29,9 @@ const Orders = () => {
                 }
             </div>
             <div className="order-info">
-                <OrderSummary orders={orders}></OrderSummary>
+                <OrderSummary orders={orders}>
+                    <Link to={'/shipping'}>Proceed Shipping</Link>
+                </OrderSummary>
             </div>
         </section>
     );

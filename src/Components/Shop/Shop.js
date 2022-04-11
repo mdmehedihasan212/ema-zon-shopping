@@ -5,6 +5,7 @@ import Product from '../Product/Product';
 import OrderSummary from '../OrderSummary/OrderSummary';
 import { addToDb } from '../../Utilities/fakedb';
 import useCart from '../../Hooks/useCart';
+import { Link } from 'react-router-dom';
 
 
 const Shop = () => {
@@ -41,8 +42,9 @@ const Shop = () => {
             </article>
             <article className="order-info">
                 <OrderSummary
-                    orders={orders}
-                ></OrderSummary>
+                    orders={orders}>
+                    <Link to={'/orders'}>Review Orders</Link>
+                </OrderSummary>
             </article>
         </section>
     );

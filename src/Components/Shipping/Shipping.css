@@ -1,0 +1,10 @@
+.shipping-form-container {
+    margin: 0 auto;
+    width: 500px;
+    height: 660px;
+    background: #FFFFFF;
+    border: 1px solid #95A0A7;
+    border-radius: 8px;
+    padding: 0px 42px;
+    color: #2A414F;
+}

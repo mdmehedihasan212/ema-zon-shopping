@@ -1,14 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './LogIn.css';
+import './SignUp.css';
 import { FcGoogle } from 'react-icons/fc';
+import { Link } from 'react-router-dom';
 
-const LogIn = () => {
+const SignUp = () => {
     return (
         <section>
             <div>
-                <form className='login-form-container'>
-                    <h1 className='form-title'>Login</h1>
+                <form className='sign-form-container'>
+                    <h1 className='form-title'>Sign Up</h1>
                     <div className="input-group">
                         <label htmlFor="email">Email</label>
                         <input type="email" name="Email" />
@@ -17,9 +17,13 @@ const LogIn = () => {
                         <label htmlFor="password">Password</label>
                         <input type="password" name="password" />
                     </div>
-                    <input className='submit-btn' type="submit" value="Login" />
-                    <p className='form-text'>New to Ema-john?
-                        <Link to={'/signup'}> Create New Account</Link>
+                    <div className="input-group">
+                        <label htmlFor="confirm-password">Confirm Password</label>
+                        <input type="password" name="confirm-password" />
+                    </div>
+                    <input className='submit-btn' type="submit" value="Sign Up" />
+                    <p className='form-text'>Already have an account?
+                        <Link to={'/login'}> Login</Link>
                     </p>
                     <p className='form-text'>
                         -or-
@@ -36,4 +40,4 @@ const LogIn = () => {
     );
 };
 
-export default LogIn;
+export default SignUp;

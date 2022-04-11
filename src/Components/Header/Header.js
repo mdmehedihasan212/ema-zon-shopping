@@ -6,7 +6,7 @@ import CustomLink from '../CustomLink/CustomLink';
 const Header = () => {
     return (
         <nav className='header-container'>
-            <img src={logo} alt="" />
+            <img src={logo} alt="logo" />
             <div className='navigation-bar'>
                 <CustomLink to={'/'}>Home</CustomLink>
                 <CustomLink to={'/shop'}>Shop</CustomLink>

@@ -7,5 +7,18 @@
 .order-summary h1 {
     font-size: 25px;
     font-weight: 400;
+}
 
+.children-btn {
+    width: 300px;
+    height: 55px;
+    font-size: 21px;
+    background: #FF9900;
+    border-radius: 4px;
+    border: none;
+}
+
+.children-btn a {
+    color: white;
+    text-decoration: none;
 }
