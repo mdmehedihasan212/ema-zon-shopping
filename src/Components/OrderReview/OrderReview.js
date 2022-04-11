@@ -1,6 +1,6 @@
 import React from 'react';
 import './OrderReview.css';
-import { AiTwotoneDelete } from 'react-icons/ai';
+import { RiDeleteBin5Line } from 'react-icons/ri';
 
 const OrderReview = ({ product, handleRemoveProduct }) => {
     const { name, img, price, shipping, quantity } = product;
@@ -20,7 +20,7 @@ const OrderReview = ({ product, handleRemoveProduct }) => {
                 </div>
                 <div className="delete-container">
                     <button onClick={() => handleRemoveProduct(product)} className='delete-button'>
-                        <AiTwotoneDelete className='delete-icon' />
+                        <RiDeleteBin5Line className='delete-icon' />
                     </button>
                 </div>
             </div>

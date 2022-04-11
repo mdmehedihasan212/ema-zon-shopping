@@ -9,9 +9,13 @@
     padding-right: 80px;
 }
 
-.logo img {
+.header-container img {
     width: 140px;
     height: 40px;
+}
+
+.navigation-bar {
+    display: flex;
 }
 
 .navigation-bar a {
