@@ -18,6 +18,21 @@
     text-align: center;
 }
 
+.form-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-link a {
+    margin: 0px 5px;
+}
+
+.create-account {
+    color: orange;
+    text-decoration: none;
+}
+
 .input-group label {
     display: block;
     margin-bottom: 9px;

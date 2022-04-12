@@ -3,14 +3,16 @@ import './SignUp.css';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router-dom';
 import auth from '../../Firebase/Firebase.init';
-import { createUserWithEmailAndPassword, GoogleAuthProvider, sendEmailVerification, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, sendEmailVerification, signInWithPopup } from 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
-    const [user, setUser] = useState(false);
+
+    const [user] = useAuthState(auth);
 
     const googleProvider = new GoogleAuthProvider();
 
@@ -40,7 +42,6 @@ const SignUp = () => {
         if (!user) {
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
-                    const user = userCredential.user;
                     setError('');
                     console.log('Create user');
 

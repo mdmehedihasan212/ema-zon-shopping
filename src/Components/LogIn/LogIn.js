@@ -1,14 +1,25 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './LogIn.css';
 import { FcGoogle } from 'react-icons/fc';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
 import auth from '../../Firebase/Firebase.init';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const LogIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [user] = useAuthState(auth);
+
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || "/";
+
+    if (user) {
+        navigate(from, { replace: true })
+    }
 
     const handleEmailBlur = event => {
         setEmail(event.target.value);
@@ -28,8 +39,20 @@ const LogIn = () => {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 setError('')
-                const user = userCredential.user;
                 console.log('User login');
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                setError(errorMessage)
+            });
+    }
+
+    const handleForgetPassword = () => {
+
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+                setError('')
+                console.log('Password reset email sent!');
             })
             .catch((error) => {
                 const errorMessage = error.message;
@@ -52,9 +75,16 @@ const LogIn = () => {
                     </div>
                     <p className='error-message'>{error}</p>
                     <input onClick={handleToLogIn} className='submit-btn' type="submit" value="Login" />
-                    <p className='form-text'>New to Ema-john?
-                        <Link to={'/signup'}> Create New Account</Link>
-                    </p>
+
+                    <div className="form-link">
+                        <p className='forget-password'>
+                            <Link onClick={handleForgetPassword} to={'/login'}>Forget Password</Link>
+                        </p>
+                        <p>
+                            <Link className='create-account' to={'/signup'}>Create New Account</Link>
+                        </p>
+                    </div>
+
                     <p className='form-text'>
                         -----or-----
                     </p>
