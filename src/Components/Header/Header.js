@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Header.css';
 import logo from '../../Assets/Logo.svg';
 import CustomLink from '../CustomLink/CustomLink';
 
 const Header = () => {
+    const [user, setUser] = useState(false);
     return (
         <nav className='header-container'>
             <img src={logo} alt="logo" />
@@ -13,7 +14,12 @@ const Header = () => {
                 <CustomLink to={'/orders'}>Orders</CustomLink>
                 <CustomLink to={'/shipping'}>Shipping</CustomLink>
                 <CustomLink to={'/about'}>About</CustomLink>
-                <CustomLink to={'/login'}>Login</CustomLink>
+                {!user ?
+                    <CustomLink to={'/login'}>Login</CustomLink>
+                    :
+                    <CustomLink to={'/signup'}>Sign Out</CustomLink>
+                }
+
             </div>
         </nav>
     );

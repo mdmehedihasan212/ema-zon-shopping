@@ -55,15 +55,7 @@ const SignUp = () => {
                 });
         }
         else {
-            signInWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    const user = userCredential.user;
-                    console.log('User login');
-                })
-                .catch((error) => {
-                    const errorMessage = error.message;
-                    setError(errorMessage)
-                });
+
 
         }
 
