@@ -1,3 +1,7 @@
+.main-form-container {
+    position: relative;
+}
+
 .sign-form-container {
     margin: 0 auto;
     width: 500px;
@@ -12,4 +16,15 @@
 .input-group input {
     font-size: 1.2em;
     padding: 10px;
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+    margin: 0px;
+}
+
+.google-btn {
+    position: absolute;
+    bottom: 30px;
 }

@@ -3,13 +3,14 @@ import './SignUp.css';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router-dom';
 import auth from '../../Firebase/Firebase.init';
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, sendEmailVerification, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 
 const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
+    const [user, setUser] = useState(false);
 
     const googleProvider = new GoogleAuthProvider();
 
@@ -32,28 +33,51 @@ const SignUp = () => {
 
     const handleToSignUp = () => {
 
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-            });
+        if (password !== confirmPassword) {
+            setError("Password didn't matched")
+            return;
+        }
+        if (!user) {
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    setError('');
+                    console.log('Create user');
+
+                    sendEmailVerification(auth.currentUser)
+                        .then(() => {
+                            console.log('Email verification sent!');
+                        });
+                })
+                .catch((error) => {
+                    const errorMessage = error.message;
+                    setError(errorMessage)
+                });
+        }
+        else {
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    console.log('User login');
+                })
+                .catch((error) => {
+                    const errorMessage = error.message;
+                    setError(errorMessage)
+                });
+
+        }
+
     }
 
     const continueWithGoogle = () => {
         signInWithPopup(auth, googleProvider)
             .then(result => {
-                const credential = GoogleAuthProvider.credentialFromResult(result);
-                const token = credential.accessToken;
                 const user = result.user;
+                console.log('Create user with google');
             })
             .catch(error => {
-                const errorCode = error.code;
                 const errorMessage = error.message;
-                const email = error.email;
-                const credential = GoogleAuthProvider.credentialFromError(error);
+                setError(errorMessage)
             })
     }
 
@@ -74,6 +98,7 @@ const SignUp = () => {
                         <label htmlFor="confirm-password">Confirm Password</label>
                         <input onBlur={handleConfirmPasswordBlur} type="password" name="confirm-password" required />
                     </div>
+                    <p className='error-message'>{error}</p>
                     <input onClick={handleToSignUp} className='submit-btn' type="submit" value="Sign Up" />
                     <p className='form-text'>Already have an account?
                         <Link to={'/login'}> Login</Link>
