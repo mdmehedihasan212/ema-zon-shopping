@@ -49,6 +49,10 @@
     margin: 0px 40px 20px;
 }
 
+.submit-btn:hover {
+    background-color: #FFE0B3;
+}
+
 .submit-btn {
     width: 415px;
     height: 55px;

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import './SignUp.css';
-import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router-dom';
 import auth from '../../Firebase/Firebase.init';
-import { createUserWithEmailAndPassword, GoogleAuthProvider, sendEmailVerification, signInWithPopup } from 'firebase/auth';
+import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import SocialResister from '../Shared/SocialResister/SocialResister';
 
 const SignUp = () => {
     const [email, setEmail] = useState('');
@@ -13,9 +13,6 @@ const SignUp = () => {
     const [error, setError] = useState('');
 
     const [user] = useAuthState(auth);
-
-    const googleProvider = new GoogleAuthProvider();
-
 
     const handleEmailBlur = event => {
         setEmail(event.target.value);
@@ -57,21 +54,8 @@ const SignUp = () => {
         }
         else {
 
-
         }
 
-    }
-
-    const continueWithGoogle = () => {
-        signInWithPopup(auth, googleProvider)
-            .then(result => {
-                const user = result.user;
-                console.log('Create user with google');
-            })
-            .catch(error => {
-                const errorMessage = error.message;
-                setError(errorMessage)
-            })
     }
 
     return (
@@ -96,15 +80,7 @@ const SignUp = () => {
                     <p className='form-text'>Already have an account?
                         <Link to={'/login'}> Login</Link>
                     </p>
-                    <p className='form-text'>
-                        -----or-----
-                    </p>
-                    <div className="google-btn">
-                        <button onClick={continueWithGoogle}>
-                            <FcGoogle className='google-icon' />
-                            <p>Continue with Google</p>
-                        </button>
-                    </div>
+                    <SocialResister></SocialResister>
                 </form>
             </div>
         </section>

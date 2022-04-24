@@ -1,0 +1,23 @@
+.line-section {
+    display: flex;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.first-div {
+    height: 20px;
+    border-top: 1px solid lightgray;
+    width: 50%;
+}
+
+.second-div {
+    height: 20px;
+    border-top: 1px solid lightgray;
+    width: 50%;
+}
+
+.text {
+    margin-top: -12px;
+    margin-left: 5px;
+    margin-right: 5px;
+}

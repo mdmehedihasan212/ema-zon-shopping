@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './LogIn.css';
-import { FcGoogle } from 'react-icons/fc';
 import { sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
 import auth from '../../Firebase/Firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import SocialResister from '../Shared/SocialResister/SocialResister';
 
 const LogIn = () => {
     const [email, setEmail] = useState('');
@@ -78,22 +78,13 @@ const LogIn = () => {
 
                     <div className="form-link">
                         <p className='forget-password'>
-                            <Link onClick={handleForgetPassword} to={'/login'}>Forget Password</Link>
+                            <Link onClick={handleForgetPassword} to={'/login'}>Forget Password?</Link>
                         </p>
                         <p>
                             <Link className='create-account' to={'/signup'}>Create New Account</Link>
                         </p>
                     </div>
-
-                    <p className='form-text'>
-                        -----or-----
-                    </p>
-                    <div className="google-btn">
-                        <button>
-                            <FcGoogle className='google-icon' />
-                            <p>Continue with Google</p>
-                        </button>
-                    </div>
+                    <SocialResister></SocialResister>
                 </form>
             </div>
         </section>
